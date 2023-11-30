@@ -20,3 +20,6 @@ Route::post('/navigation/stat', '\App\Http\Controllers\Common\Navigation\IndexCo
 Route::get('/navigation/search', '\App\Http\Controllers\Common\Navigation\IndexController@search');
 Route::get('/navigation/detail', '\App\Http\Controllers\Common\Navigation\IndexController@detail');
 Route::get('/navigation/tag', '\App\Http\Controllers\Common\Navigation\IndexController@tag');
+Route::get('/get_captcha/{config?}', function (\Mews\Captcha\Captcha $captcha, $config) {
+    return $captcha->src($config);
+});

@@ -179,6 +179,8 @@ return [
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         // 通过ip获取地理信息。https://lyften.com/projects/laravel-geoip/doc/
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        // 登录验证
+        Mews\Captcha\CaptchaServiceProvider::class,
     ],
 
     /*
@@ -230,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];
