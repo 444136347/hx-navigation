@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers\Navigation;
 
+use App\Admin\Actions\BatchSearchRecord;
 use App\Admin\Actions\Restore\BatchRestore;
 use App\Admin\Actions\Restore\Restore;
 use App\Admin\Controllers\AdminController;
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Cache;
 
 class SearchController extends AdminController
 {
-    protected $translation = 'navigation-search';
-
     protected function grid()
     {
         return Grid::make(new Search(), function (Grid $grid) {
@@ -39,9 +38,12 @@ class SearchController extends AdminController
                 $filter->like('keyword')->width(4);
                 $filter->equal('is_hot')->select([0 => '否',1 => '是'])->width(4);
                 $filter->equal('status')->select([0 => '关闭',1 => '开启'])->width(4);
+                $filter->month('column');
 
                 $filter->scope('trashed', '回收站')->onlyTrashed();
             });
+
+            $grid->tools(new BatchSearchRecord());
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 if (request('_scope_') == 'trashed') {

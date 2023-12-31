@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Cache;
 
 class ConfigController extends AdminController
 {
-    protected $translation = 'navigation-config';
-
     protected function grid()
     {
         return Grid::make(new Config(), function (Grid $grid) {

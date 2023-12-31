@@ -3,6 +3,7 @@
 namespace App\Admin\Repositories\Navigation;
 
 use App\Models\Navigation\Search as Model;
+use App\Models\Navigation\SearchRecord;
 use Carbon\Carbon;
 use Dcat\Admin\Repositories\EloquentRepository;
 use Illuminate\Support\Facades\Cache;
@@ -26,7 +27,7 @@ class Search extends EloquentRepository
                 'status' => 1,
             ]);
         }
-        DB::table(Model::getRecordTableName())->insert([
+        DB::table(SearchRecord::getRecordTableName())->insert([
             'search_id' => $word->id,
             'keyword' => $keywords,
             'created_at' => Carbon::now(),

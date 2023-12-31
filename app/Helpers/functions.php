@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 // 二维数组排序
 if(!function_exists('multiArraySort')) {
@@ -83,4 +84,33 @@ if(!function_exists('convertAtTime')) {
         return Carbon\Carbon::parse($at)->format("Y-m-d H:i");
     }
 }
+
+if (! function_exists('user_admin_config')) {
+    function user_admin_config($key = null, $value = null)
+    {
+        $session = session();
+
+        if (! $config = $session->get('admin.config')) {
+            $config = config('admin');
+        }
+
+        if (is_array($key)) {
+            // 保存
+            foreach ($key as $k => $v) {
+                Arr::set($config, $k, $v);
+            }
+
+            $session->put('admin.config', $config);
+
+            return;
+        }
+
+        if ($key === null) {
+            return $config;
+        }
+
+        return Arr::get($config, $key, $value);
+    }
+}
+
 

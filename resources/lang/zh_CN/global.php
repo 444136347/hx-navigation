@@ -45,6 +45,8 @@ return [
         'Setting'       => '设置',
         'users'         => '管理员',
         'Users'         => '管理员',
+        'SearchRecord'  => '搜索日志',
+        'searchRecord'  => '搜索日志',
     ],
     'options' => [
         //

@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Cache;
 
 class MessageController extends AdminController
 {
-    protected $translation = 'navigation-message';
-
     protected function grid()
     {
         return Grid::make(new Message(), function (Grid $grid) {

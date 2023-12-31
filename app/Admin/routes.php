@@ -36,6 +36,8 @@ Route::group([
         $router->resource('suggest', 'SuggestController');
         // 搜索
         $router->resource('search', 'SearchController');
+        // 搜索日志
+        $router->get('/searchRecord', 'SearchRecordController@index');
     });
 
     // 内容管理

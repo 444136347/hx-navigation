@@ -11,8 +11,6 @@ use App\Admin\Controllers\AdminController;
 
 class SuggestController extends AdminController
 {
-    protected $translation = 'navigation-suggest';
-
     protected function grid()
     {
         return Grid::make(new Suggest(), function (Grid $grid) {
